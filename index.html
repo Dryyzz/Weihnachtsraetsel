@@ -1,0 +1,145 @@
+<html>
+<head>
+    <meta charset="UTF-8"> <!-- Set character encoding to UTF-8 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background styling */
+        body {
+            background-image: url('bg.jpg'); /* Retain the background image */
+            background-size: cover;
+            background-position: center;
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Fancy title styles */
+        h1 {
+            font-size: 60px;
+            color: #fff;
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px; /* Add space below the title */
+        }
+
+        /* Glowing text animation */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+            }
+            100% {
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        /* Centered container */
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            border-radius: 15px;
+            padding: 40px 30px;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        /* Styling for text below the title */
+        .message-text {
+            font-size: 24px;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Styling for input fields */
+        input[type="text"], input[type="button"] {
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Button hover and focus effects */
+        input[type="text"]:hover, input[type="button"]:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* Input focus effect */
+        input[type="text"]:focus {
+            outline: none;
+            border: 2px solid #ffcc00;
+        }
+
+        /* Button active effect */
+        input[type="button"]:active {
+            transform: scale(0.98);
+        }
+
+        /* Styling for the message box */
+        #message {
+            color: #fff;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        /* Style for horizontal lines */
+        hr {
+            border: 1px solid #fff;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        /* Styling for the link */
+        #message a {
+            color: #ffcc00;
+            font-size: 20px;
+            text-decoration: none;
+            display: block;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1>Rätsel Tag 1</h1>
+    <div class="message-text">
+        Bonjour Sonja :)<br><br>
+
+        Es ist mal wieder an der Zeit ein ordentliches Weihnachtsrätsel zu lösen. Wie du siehst sind alle schon in Weihnachtsstimmung und drücken dir feste die Daumen!
+
+	<!-- Insert image here -->
+        <img src="toutlemonde.jpg" style="max-width:100%; height:auto; margin: 20px 0;">
+
+        Da wir uns dieses Jahr einen Adventskalender teilen ist die Anzahl von 24 Rätseln auf 12 zusammengeschrumpft... die perfekte Vorlage für ein Jahreszeitenrätsel!<br><br>
+        Wusstest du, dass die Namen unserer Monate ihren Ursprung im modernen Gregorianischen Kalender haben, von denen viele aus dem alten Rom stammen? Nein? Na dann 	solltest du dich schleunigst aufschlauen wenn du in den nächsten 12 Rätsel herausfinden willst welche Monate dahinter stecken ;)<br><br>
+	Ach ja, und du solltest dir die Lösungen immer unbedingt merken, da sie dir bei der Freischaltung weiterer Rätsel behilflich sein werden.<br><br>
+
+        So nun geht es aber los mit dem Rätsel von Tag 1, du wolltest doch immer dein Englisch ein bisschen trainieren:<br><br>
+
+        I’m the month that carries Mars’ great name,<br>
+	The god of war, known for his fame.<br>
+	Spring and battle both start anew,<br>
+	What month am I, with skies so blue?<br><br>
+    </div>  
+</div>
+</body>
+</html>
