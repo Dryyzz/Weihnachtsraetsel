@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background styling */
+        body {
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Fancy title styles */
+        h1 {
+            font-size: 60px;
+            color: #fff;
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+        }
+
+        /* Centered container */
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 40px 30px;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        /* Message text styling */
+        .message-text {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        /* Box container */
+        .box-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* Individual boxes */
+        .box {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: lightgray;
+            border: 2px solid #ccc;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .box.assigned {
+            background-color: lightgreen;
+            cursor: not-allowed;
+        }
+
+        /* Button styling */
+        .button-section {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .button-section button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffcc00;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button-section button:hover {
+            background-color: #ffaa00;
+        }
+
+        /* Result link */
+        #result-link {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #result-link a {
+            color: #ffcc00;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Weihnachts<br>prüfung</h1>
+    <div class="message-text">
+        Ordne allen Monaten die Rätsel-Tage zu an denen sie im Jahreszeitenrätsel mitmachen durften!
+    </div>
+    <div class="box-container" id="box-container">
+        <!-- 12 boxes will be dynamically created here -->
+    </div>
+    <div class="button-section">
+        <button id="reset-button">Reset</button>
+        <button id="check-button" style="display: none;">Lösung prüfen</button>
+        <p id="result-link"><a href="present.html" target="_blank">Tres bon du hast es geschafft! Hier gehts zum Geschenk :)</a></p>
+    </div>
+</div>
+
+<script>
+    const container = document.getElementById('box-container');
+    const checkButton = document.getElementById('check-button');
+    const resetButton = document.getElementById('reset-button');
+    const resultLink = document.getElementById('result-link');
+    let currentNumber = 1;
+    const steps = 2; // Steps of 2
+    const maxNumber = 23; // Last number is 23
+    const correctSolution = [7, 19, 1, 9, 11, 21, 3, 15, 5, 13, 17, 23]; // Correct sequence
+    const months = [
+        "Januar", "Februar", "März", "April", 
+        "Mai", "Juni", "Juli", "August", 
+        "September", "Oktober", "November", "Dezember"
+    ];
+
+    // Create 12 boxes dynamically with month names
+    function initializeBoxes() {
+        container.innerHTML = ''; // Clear the container
+        currentNumber = 1; // Reset the starting number
+        months.forEach((month, index) => {
+            const box = document.createElement('div');
+            box.classList.add('box');
+            box.setAttribute('data-id', index + 1);
+            box.innerHTML = `<div>${month}</div><div></div>`; // Month name and space for the number
+            box.addEventListener('click', function () {
+                if (!box.classList.contains('assigned') && currentNumber <= maxNumber) {
+                    box.lastElementChild.textContent = currentNumber; // Assign number to the bottom div
+                    box.classList.add('assigned');
+                    currentNumber += steps; // Increment by step
+                }
+                // Show the "Check Numbers" button once all boxes are assigned
+                if (currentNumber > maxNumber) {
+                    checkButton.style.display = 'block';
+                }
+            });
+            container.appendChild(box);
+        });
+    }
+
+    // Check if the numbers are correctly assigned
+    checkButton.addEventListener('click', function () {
+        const boxes = document.querySelectorAll('.box');
+        let isCorrect = true;
+
+        boxes.forEach((box, index) => {
+            if (parseInt(box.lastElementChild.textContent) !== correctSolution[index]) {
+                isCorrect = false;
+            }
+        });
+
+        if (isCorrect) {
+            resultLink.style.display = 'block';
+        } else {
+            alert('Leider stimmt die Reihenfolge so noch nicht... versuchs nochmal!');
+        }
+    });
+
+    // Reset button functionality
+    resetButton.addEventListener('click', function () {
+        initializeBoxes();
+        checkButton.style.display = 'none';
+        resultLink.style.display = 'none';
+    });
+
+    // Initialize the boxes when the page loads
+    initializeBoxes();
+</script>
+</body>
+</html>

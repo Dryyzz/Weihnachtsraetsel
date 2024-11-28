@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> <!-- Set character encoding to UTF-8 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background styling */
+        body {
+            background-image: url('bg.jpg'); /* Retain the background image */
+            background-size: cover;
+            background-position: center;
+            font-family: 'Roboto', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Fancy title styles */
+        h1 {
+            font-size: 60px;
+            color: #fff;
+            text-align: center;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px; /* Add space below the title */
+        }
+
+        /* Glowing text animation */
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+            }
+            100% {
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        /* Centered container */
+        .container {
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            border-radius: 15px;
+            padding: 40px 30px;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        /* Styling for text below the title */
+        .message-text {
+            font-size: 24px;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Styling for input fields */
+        input[type="text"], input[type="button"] {
+            padding: 15px 25px;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Button hover and focus effects */
+        input[type="text"]:hover, input[type="button"]:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        /* Input focus effect */
+        input[type="text"]:focus {
+            outline: none;
+            border: 2px solid #ffcc00;
+        }
+
+        /* Button active effect */
+        input[type="button"]:active {
+            transform: scale(0.98);
+        }
+
+        /* Styling for the message box */
+        #message {
+            color: #fff;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        /* Style for horizontal lines */
+        hr {
+            border: 1px solid #fff;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        /* Styling for the link (match title styling) */
+        .link-section a {
+            color: #ffcc00;
+            font-size: 60px; /* Same size as the title */
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            display: block;
+            margin-top: 15px;
+            animation: glow 1.5s ease-in-out infinite; /* Apply the glowing effect */
+        }
+
+        /* Link hover effect */
+        .link-section a:hover {
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 50px rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1>Rätsel Tag 23</h1>
+    <div class="message-text">
+        Once the tenth, now I am the last,<br>
+        I hope with the riddles you had quite a blast.<br>
+        Not that hard to guess, only I do remain,<br>
+        What month am I, and what will you gain?<br><br><br>
+
+        Da wir nun am Ende unseres Jahreszeitenrätsels angelangt sind, merk dir den letzten Monat, denn als Abschluss der Adventszeit gibt es noch eine letzte Weihnachts Prüfung zu bestehen...<br><br> 
+	Um die dein Geschenk zu verdienen musst du nochmal all deine gelösten Rätsel zusammenraffen... 	da ich weiß wie schwer du es mit der Kontrolle beim warten hast, findest du die Prüfung erst am 24. hier ;)<br><br>12:22 27/11/2024
+    </div>  
+    <div class="link-section" id="link-section">
+        <p><a href="final.html" id="final-link">Weihnachts Prüfung</a>!</p>
+    </div>
+</div>
+
+<script>
+    // Get today's date
+    const today = new Date();
+    const day = today.getDate(); // Get the current day (1-31)
+    const month = today.getMonth() + 1; // Get the current month (1-12, January = 1)
+
+    // Check if today is the 24th of December
+    if (day === 24 && month === 12) {
+        // Show the link to final.html only on the 24th
+        document.getElementById('link-section').style.display = 'block';
+    } else {
+        // Hide the link section if it's not the 24th
+        document.getElementById('link-section').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
